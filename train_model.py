@@ -6,8 +6,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-train_dataset = pd.read_csv('train_dataset_dvc.csv')
-test_dataset = pd.read_csv('test_dataset_dvc.csv')
+train_dataset = pd.read_csv('train_dataset.csv')
+test_dataset = pd.read_csv('test_dataset.csv')
 
 X_train = train_dataset.drop(columns=['No-show']).to_numpy()
 X_test = test_dataset.drop(columns=['No-show']).to_numpy()
