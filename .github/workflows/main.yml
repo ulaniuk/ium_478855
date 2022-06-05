@@ -1,0 +1,21 @@
+name: train-model
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip3 install pandas
+          pip3 install tqdm
+          pip3 install matplotlib
+          pip3 install seaborn
+          pip3 install torch
+          python train_model.py
+          cat logs.txt >> logs.md
+          cml-send-comment logs.md
